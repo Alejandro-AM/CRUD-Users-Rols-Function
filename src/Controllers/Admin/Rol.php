@@ -42,10 +42,11 @@ class Rol extends PrivateController
         $this->viewData['mode_desc'] = '';
         $this->viewData['crsf_token'] = '';
         $this->viewData['rolescod'] = '';
-        $this->viewData['error_rolescod'] = '';
+        $this->viewData['error_rolescod'] = array();
         $this->viewData['rolesdsc'] = '';
-        $this->viewData['error_rolesdsc'] = '';
+        $this->viewData['error_rolesdsc'] = array();
         $this->viewData['rolesest'] = '';
+
         $this->viewData['readonly'] = false;
         $this->viewData['showBtn'] = true;
      
@@ -101,13 +102,14 @@ class Rol extends PrivateController
 
         if(Validators::IsEmpty($this->viewData['rolescod']))
         {
-            $this->viewData['error_rolescod'] = 'El codigo del rol es requerido.';
+            $this->viewData['error_rolescod'][] = 'El codigo del rol es requerido.';
+            $hasErrors = true;
         }
 
         if(Validators::IsEmpty($this->viewData['rolesdsc']))
         {
+            $this->viewData['error_rolesdsc'][] = 'El nombre del rol es requerido.';
             $hasErrors = true;
-            $this->viewData['error_rolesdsc'] = 'El nombre del rol es requerido.';
         }
 
         if(!$hasErrors)
@@ -183,7 +185,7 @@ class Rol extends PrivateController
     {
         if($this->viewData['mode'] === 'INS')
         {
-            $this->viewData['modeDesc'] = $this->arrModeDesc['INS'];
+            $this->viewData['mode_desc'] = $this->arrModeDesc['INS'];
             $this->viewData['readonlycode'] = false;
             $this->viewData['btnEnviarText'] = 'Guardar Nuevo';
         }

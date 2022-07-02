@@ -4,12 +4,12 @@
         <input type="hidden" name="mode" value="{{mode}}" />
         <input type="hidden" name="crsf_token" value="{{crsf_token}}" />
         <fieldset>
-            <label for="rolesest">Codigo: </label>
-            <input {{if readonlycode}}readonly{{endif readonlycode}} type="text" name="rolescod" id="rolescod" value="{{rolescod}}"/>
+            <label for="rolescod">Codigo: </label>
+            <input {{if readonlycode}}readonly{{endif readonlycode}} type="text" name="rolescod" id="rolescod" placeholder="Codigo" value="{{rolescod}}"/>
             {{if error_rolescod}}
             {{foreach error_rolescod}}
             <div class="error">{{this}}</div>
-            {{endforeach error_rolescod}}
+            {{endfor error_rolescod}}
             {{endif error_rolescod}}
         </fieldset>
         <fieldset>
